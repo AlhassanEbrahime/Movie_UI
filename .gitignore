@@ -1,42 +1,88 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# .gitignore for Angular 19 project
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
-
-# Node
+# Dependencies
 /node_modules
-npm-debug.log
-yarn-error.log
+/.package-lock
+jspm_packages/
+/yarn-error.log
+pnpm-debug.log*
 
-# IDEs and editors
-.idea/
+# Build artifacts
+/dist
+/aot
+/server
+*.js
+*.js.map
+*.css
+*.css.map
+*.d.ts
+/build
+.eslintcache
+
+# Cache directories
+/.angular
+/.nx
+/.cache
+/.sass-cache
+/.vscode/.browse.cwtools
+
+# Environment files
+/src/environments/environment*.ts
+!src/environments/environment.prod.ts
+
+# Logs and temp files
+/logs
+*.log
+npm-debug.log*
+/tmp
+/.tmp
+/.vs
+/coverage
+
+# IDE specific files
+/.idea
 .project
 .classpath
 .c9/
 *.launch
 .settings/
 *.sublime-workspace
-
-# Visual Studio Code
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-
-# System files
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+
+# Testing
+/coverage
+chrome-profile-data
+karma-report.xml
+junit.xml
+
+# Editor configs
+/.editorconfig
+
+# Package manager specific
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+shrinkwrap.yaml
+
+# Browserlist
+/.browserslistrc
+
+# Optional (uncomment if needed)
+# /cypress/videos
+# /cypress/screenshots
+# /docker-compose*.yml
+# .dockerignore
+# .env
