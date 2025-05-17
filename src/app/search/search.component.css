@@ -1,0 +1,41 @@
+.search-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  font-size: 16px;
+  color: #aaa;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px 12px 40px; 
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  transition: border-color 0.3s;
+} 
+
+.search-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+
+.login-required-text {
+  margin-bottom: 15px;
+  color: #dc3545; 
+  font-weight: bold;
+}

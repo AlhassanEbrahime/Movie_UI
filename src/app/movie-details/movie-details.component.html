@@ -1,0 +1,86 @@
+<!-- pages/movie-details/movie-details.component.html -->
+<div class="movie-details-container">
+  <button class="back-button" (click)="goBack()">
+    <i class="fa fa-arrow-left"></i> Back
+  </button>
+
+  @if (isLoading) {
+    <div class="loading-container">
+      <div class="spinner"></div>
+      <p>Loading movie details...</p>
+    </div>
+  }
+
+  @if (error) {
+    <div class="error-container">
+      <p>{{ error }}</p>
+      <button (click)="ngOnInit()">Try Again</button>
+    </div>
+  }
+
+  @if (!isLoading && !error && movie) {
+    <div class="movie-details-content">
+      <div class="movie-poster-container">
+        @if (movie.Poster && movie.Poster !== 'N/A') {
+          <img [src]="movie.Poster" [alt]="movie.Title + ' poster'" class="movie-poster"> 
+        } @else {
+          <div class="no-poster">No Image Available</div>
+        }
+      </div>
+      
+      <div class="movie-info-container">
+        <h1 class="movie-title">{{ movie.Title }}</h1>
+        
+        <div class="movie-meta">
+          <span class="movie-year">{{ movie.Year }}</span> 
+          <span class="separator">•</span>
+          <span class="movie-runtime">{{ movie.Runtime }}</span>
+          <span class="separator">•</span>
+          <span class="movie-type">{{ movie.Type }}</span>
+        </div>
+        
+        <div class="movie-rating">
+          <span class="rating-star">⭐</span>
+          <span class="rating-value">{{ movie.imdbRating || 'N/A' }}/10</span>
+        </div>
+        
+        <div class="movie-genre">
+          <span class="label">Genre:</span>
+          <span>{{ movie.Genre || 'N/A' }}</span>
+        </div>
+        
+        <div class="movie-director">
+          <span class="label">Director:</span>
+          <span>{{ movie.Director || 'N/A' }}</span>
+        </div>
+        
+        <div class="movie-actors">
+          <span class="label">Cast:</span>
+          <span>{{ movie.Actors || 'N/A' }}</span>
+        </div>
+        
+        <div class="movie-plot">
+          <h3>Plot</h3>
+          <p>{{ movie.Plot || 'No plot information available.' }}</p>
+        </div>
+        
+        <div class="movie-additional-info">
+          @if (movie.Language) {
+            <div class="info-item">
+              <span class="label">Language:</span>
+              <span>{{ movie.Language }}</span>
+            </div>
+          }
+          
+          @if (movie.Country) {
+            <div class="info-item">
+              <span class="label">Country:</span>
+              <span>{{ movie.Country }}</span>
+            </div>
+          }
+          
+        </div>
+      </div>
+    </div>
+  }
+</div>

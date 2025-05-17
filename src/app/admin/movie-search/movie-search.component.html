@@ -1,0 +1,58 @@
+<div class="movie-search-container">
+    <h2>Search & Add Movies</h2>
+    
+    <div class="search-box">
+      <input 
+        type="text" 
+        [formControl]="searchControl" 
+        placeholder="Search for movies in OMDB..." 
+        class="search-input"
+      />
+    </div>
+    
+    <div *ngIf="isLoading" class="loading">
+      Loading...
+    </div>
+    
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    
+    <div *ngIf="searchResults.length > 0" class="search-results">
+      <div class="toolbar">
+        <button 
+          *ngIf="selectedMovies.length > 0" 
+          (click)="addSelectedMovies()" 
+          class="add-button"
+        >
+          Add {{ selectedMovies.length }} Selected Movies
+        </button>
+      </div>
+      
+      <div class="movies-grid">
+        <div 
+          *ngFor="let movie of searchResults" 
+          class="movie-card" 
+          [class.selected]="isSelected(movie)"
+          (click)="toggleSelection(movie)"
+        >
+          <div class="movie-poster">
+            <img *ngIf="movie.Poster && movie.Poster !== 'N/A'" [src]="movie.Poster" alt="{{ movie.Title }} poster">
+            <div *ngIf="!movie.Poster || movie.Poster === 'N/A'" class="no-poster">No Poster Available</div>
+          </div>
+          <div class="movie-info">
+            <h3>{{ movie.Title }}</h3>
+            <p>{{ movie.Year }}</p>
+            <p>{{ movie.Type }}</p>
+            <button (click)="getMovieDetails(movie.imdbID); $event.stopPropagation();" class="add-single-button">
+              Add to Database
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="searchResults.length === 0 && !isLoading && searchControl.value" class="no-results">
+      No movies found matching "{{ searchControl.value }}".
+    </div>
+  </div>

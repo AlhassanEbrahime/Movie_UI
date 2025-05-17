@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="logo-container">
+    <img src="https://cdn.pixabay.com/photo/2022/08/07/20/43/cinema-7371380_1280.png" alt="Cinema" class="logo-img">
+    <a routerLink="/" class="logo">MWatch</a>
+  </div>
+
+  <div class="nav-buttons">
+    <app-search></app-search>
+
+    <ng-container *ngIf="!isLoggedIn; else loggedIn">
+      <a routerLink="/login" class="nav-btn">Login</a>
+      <a routerLink="/register" class="nav-btn">Register</a>
+    </ng-container>
+
+    <ng-template #loggedIn>
+      <a *ngIf="isAdmin" routerLink="/admin" class="nav-btn">Admin Dashboard</a>
+      <button (click)="logout()" class="nav-btn">Logout</button>
+    </ng-template>
+  </div>
+</nav>

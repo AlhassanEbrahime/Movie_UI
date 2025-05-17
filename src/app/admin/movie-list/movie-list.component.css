@@ -1,0 +1,131 @@
+.movie-list-container {
+    color: white;
+  }
+  
+  h2 {
+    color: #e50914;
+    margin-bottom: 20px;
+  }
+  
+  .toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .delete-button,
+  .delete-single-button,
+  .select-all-button {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .select-all-button {
+    background-color: #333;
+  }
+  
+  .delete-button:hover,
+  .delete-single-button:hover {
+    background-color: #c40812;
+  }
+  
+  .select-all-button:hover {
+    background-color: #444;
+  }
+  
+  .movies-table-container {
+    overflow-x: auto;
+  }
+  
+  .movies-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  .movies-table th,
+  .movies-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+  }
+  
+  .movies-table th {
+    background-color: #1a1a1a;
+    font-weight: 500;
+  }
+  
+  .movies-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .table-poster {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .no-poster-small {
+    width: 60px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: #888;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .delete-single-button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+  }
+  
+  .pagination button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover:not([disabled]) {
+    background-color: #444;
+  }
+  
+  .pagination button[disabled] {
+    background-color: #222;
+    cursor: not-allowed;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #888;
+  }
+  
+  .error-message {
+    background-color: rgba(229, 9, 20, 0.2);
+    color: #e50914;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }

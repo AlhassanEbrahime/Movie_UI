@@ -1,0 +1,54 @@
+<!-- pages/search-results.component.html -->
+<div class="search-results-container">
+    @if (searchQuery) {
+      <h2>Search results for "{{ searchQuery }}"</h2>
+      @if (movies.length > 0) {
+        <p class="results-count">Found {{ totalResults }} results</p>
+      }
+    }
+    
+    @if (isLoading) {
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Loading results...</p>
+      </div>
+    }
+  
+    @if (error) {
+      <div class="error-container">
+        <p>{{ error }}</p>
+        <button (click)="ngOnInit()">Try Again</button>
+      </div>
+    }
+  
+    @if (!isLoading && !error) {
+      @if (movies.length === 0 && searchQuery) {
+        <div class="no-results">
+          <p>No movies found matching "{{ searchQuery }}".</p>
+        </div>
+      }
+  
+      @if (movies.length > 0) {
+        <div class="movie-grid">
+          @for (movie of movies; track movie.imdbID) {
+            <div class="movie-card">
+              <a [routerLink]="['/movie-details', movie.imdbID]" class="movie-link">
+                <div class="movie-poster">
+                  @if (movie.Poster && movie.Poster !== 'N/A') {
+                    <img [src]="movie.Poster" [alt]="movie.Title + ' poster'" class="poster-image">
+                  } @else {
+                    <div class="no-poster">No Image Available</div>
+                  }
+                </div>
+                <div class="movie-info">
+                  <h3 class="movie-title">{{ movie.Title }}</h3>
+                  <div class="movie-year">{{ movie.Year }}</div>
+                  <div class="movie-type">{{ movie.Type }}</div>
+                </div>
+              </a>
+            </div>
+          }
+        </div>
+      }
+    }
+  </div>

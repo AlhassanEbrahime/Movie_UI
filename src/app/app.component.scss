@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #000000;
+    color: white;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .home-button {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    z-index: 3;
+    cursor: pointer;
+  }
+  
+  .home-button:hover {
+    color: #007bff;
+  }
+  
+  .search-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+  }
+  

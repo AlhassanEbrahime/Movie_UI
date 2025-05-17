@@ -1,0 +1,71 @@
+<div class="movie-list-container">
+    <h2>Manage Movies</h2>
+    
+    <div *ngIf="isLoading" class="loading">
+      Loading...
+    </div>
+    
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    
+    <div class="toolbar">
+      <button 
+        *ngIf="selectedMovies.length > 0" 
+        (click)="deleteSelectedMovies()" 
+        class="delete-button"
+      >
+        Delete {{ selectedMovies.length }} Selected Movies
+      </button>
+      <button (click)="selectAll()" class="select-all-button">
+        {{ selectedMovies.length === movies.length ? 'Deselect All' : 'Select All' }}
+      </button>
+    </div>
+    
+    <div class="movies-table-container">
+      <table class="movies-table">
+        <thead>
+          <tr>
+            <th width="40px"></th>
+            <th width="80px">Poster</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Rating</th>
+            <th width="100px">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movie of movies">
+            <td>
+              <input 
+                type="checkbox" 
+                [checked]="isSelected(movie.id)" 
+                (change)="toggleSelection(movie.id)"
+              />
+            </td>
+            <td>
+              <img 
+                *ngIf="movie.Poster && movie.Poster !== 'N/A'" 
+                [src]="movie.Poster" 
+                alt="{{ movie.Title }} poster" 
+                class="table-poster"
+              >
+              <div *ngIf="!movie.Poster || movie.Poster === 'N/A'" class="no-poster-small">N/A</div>
+            </td>
+            <td>{{ movie.Title }}</td>
+            <td>{{ movie.Year }}</td>
+            <td>{{ movie.imdbRating }}</td>
+            <td>
+              <button (click)="deleteMovie(movie.id)" class="delete-single-button">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="pagination">
+      <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+  </div>

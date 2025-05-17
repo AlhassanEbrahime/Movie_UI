@@ -1,0 +1,17 @@
+<div class="movie-grid">
+  <div
+    class="movie-card"
+    *ngFor="let movie of movies"
+    [routerLink]="['/movie', movie.id]">
+    <img [src]="movie.Poster" [alt]="movie.Title" />
+    <h3>{{ movie.Title }}</h3>
+    <p class="movie-rating">⭐ {{ movie.imdbRating }}/10</p>
+
+  </div>
+</div>
+
+<div class="pagination">
+  <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>
